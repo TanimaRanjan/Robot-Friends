@@ -31,7 +31,6 @@ class App extends React.Component {
 
   render() {
 
-    console.log(this.props.store)
     let {robots} = this.state
     const { searchField, onSearchChange } = this.props
     let filteredList = null
