@@ -1,0 +1,13 @@
+.card {
+      width:25vw;
+      border-radius: 10px;
+      background-color: aquamarine;
+      margin:10px;
+      transition:all .3s ease-in;
+
+
+      &:hover {
+          transform: scale(1.04);
+      }
+
+}
