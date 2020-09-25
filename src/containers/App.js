@@ -4,16 +4,17 @@ import Header from '../pages/Header'
 import SearchField from '../components/search-field/search-field'
 import Scroll from '../components/scroll/scroll'
 import CardList from '../components/card-list/card-list'
-
+import { connect }  from 'react-redux';
+import { setSearchField } from "../actions";
 import './App.css';
 
 class App extends React.Component {
-  constructor () {
-    super() 
+  constructor (props) {
+    super(props)
 
     this.state = {
-      robos : null,
-      searchText : ''
+      robots : null,
+      // searchText : ''
     }
   }
 
@@ -23,30 +24,25 @@ class App extends React.Component {
     let users = await userResp.json()
 
     this.setState({
-      robos:users
+      robots:users
     })
   }
 
-  onSearchRobo = (e) => {
-    e.preventDefault();
-    let search = e.target.value.trim()
-    this.setState({
-      searchText:search
-    })
 
-  }
   render() {
 
-    let {robos, searchText} = this.state
+    console.log(this.props.store)
+    let {robots} = this.state
+    const { searchField, onSearchChange } = this.props
     let filteredList = null
-    if(robos) {
-      filteredList = robos.filter((robo) => robo.name.toLowerCase().includes(searchText.toLowerCase()))
+    if(robots) {
+      filteredList = robots.filter((robot) => robot.name.toLowerCase().includes(searchField.toLowerCase()))
     }
     
     return (
       <div className="App">
         <Header />
-        <SearchField onSearchRobo={this.onSearchRobo}/>
+        <SearchField onSearchChange={onSearchChange}/>
         <Scroll>
           <CardList robos={filteredList}/>
         </Scroll>
@@ -55,4 +51,16 @@ class App extends React.Component {
   }
 }
 
-export default App;
+const mapStateToProps = state => {
+  return {
+    searchField: state.searchField
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    onSearchChange: (event) => dispatch(setSearchField(event.target.value))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

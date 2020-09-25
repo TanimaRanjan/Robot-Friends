@@ -2,9 +2,9 @@ import React from 'react'
 
 import './search-field.scss'
 
-const SearchField = ({onSearchRobo}) => (
-    <div>
-        <input type='search' placeholder='search for Robo Friend' onChange={onSearchRobo}/>
+const SearchField = ({onSearchChange}) => (
+    <div className='search-field'>
+        <input type='search' placeholder='Search for Robo Friend' onChange={onSearchChange}/>
     </div>
 )
 
