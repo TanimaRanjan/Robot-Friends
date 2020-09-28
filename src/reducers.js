@@ -20,7 +20,7 @@ const initialStateRobot = {
     error:''
 
 }
-export const requestRobot = (state=initialStateRobot, action={}) => {
+export const requestRobots = (state=initialStateRobot, action={}) => {
     switch (action.type) {
         case REQUEST_ROBOT_PENDING: {
             return {...state, isPending:true}
