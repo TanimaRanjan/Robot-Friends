@@ -42,12 +42,12 @@ class App extends React.Component {
   }
 }
 
-const mapStateToProps = state => {
+const mapStateToProps = ({searchRobots, requestRobots}) => {
   return {
-    searchField: state.searchRobots.searchField,
-    robots:state.requestRobot.robots,
-    isPending:state.requestRobot.isPending,
-    error:state.requestRobot.error
+    searchField: searchRobots.searchField,
+    robots:requestRobots.robots,
+    isPending:requestRobots.isPending,
+    error:requestRobots.error
   }
 }
 
