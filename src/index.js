@@ -8,7 +8,6 @@ import thunkMiddleware  from 'redux-thunk';
 import {searchRobots, requestRobots} from "./reducers";
 import { createLogger } from 'redux-logger'
 
-
 const logger = createLogger();
 
 const rootReducer = combineReducers({searchRobots, requestRobots})
