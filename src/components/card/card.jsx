@@ -1,8 +1,6 @@
 import React from 'react'
 
-
 import './card.scss'
-
 
 const Card = ({id, name, email}) => (
     <div className='card'>
